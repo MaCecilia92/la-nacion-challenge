@@ -1,0 +1,4 @@
+.underlineTitle {
+    @apply underline underline-offset-8 decoration-2 mb-4 ;
+  }
+  
