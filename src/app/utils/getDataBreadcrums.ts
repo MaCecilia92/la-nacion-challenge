@@ -1,15 +1,9 @@
-import type { Articles } from "./interfaces";
+import type { Articles, TagsArray } from "./interfaces";
 
-interface Tags {
-    slug: string,
-    text: string,
-    count: number
-}
-
-const sortedTags = (items: Tags[]) => items.sort((a, b) => b.count - a.count).slice(0, 10);
+const sortedTags = (items: TagsArray[]) => items.sort((a, b) => b.count - a.count).slice(0, 10);
 
 export const getDataBreadcrumbs = (data: Articles[]) => {
-    const tagCounts: Record<string, Tags> = {};
+    const tagCounts: Record<string, TagsArray> = {};
     data.forEach(article => {
         article.taxonomy.tags.forEach(tag => {
             if (!tagCounts[tag.slug]) {

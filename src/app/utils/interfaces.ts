@@ -40,3 +40,9 @@ export interface Articles {
     slug: string
     text: string
   }
+
+  export interface TagsArray {
+    slug: string,
+    text: string,
+    count: number
+}

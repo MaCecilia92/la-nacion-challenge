@@ -1,6 +1,10 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card } from "../components";
-import { getDataBreadcrumbs } from "../utils/getDataBreadcrums";
-import { getDataFiltered } from "../utils/getDataFiltered";
+import { setDataArticlesRequest } from '../store/articles/reducer';
+import { getArticles } from '../store/articles/selectors';
 import type { Articles } from "../utils/interfaces";
 
 const data: Articles[] = [
@@ -1952,11 +1956,17 @@ const data: Articles[] = [
   },
 ];
 
+
+
 export default function ArticlesPage() {
-  // const dataTest = getDataFiltered(data);
-  // console.log(dataTest, "dataTest");
-  const tagTest = getDataBreadcrumbs(data);
-  console.log(tagTest, "tag");
+
+  const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(setDataArticlesRequest());
+	}, []);
+	const users = useSelector(getArticles);
+	console.log(users, 'user');
 
   return (
     <div className="flex">
