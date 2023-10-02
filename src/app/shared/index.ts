@@ -1,2 +1,2 @@
-export {LinkTag} from './LinkTag';
-export {Title} from './Title';
+export { LinkTag } from "./LinkTag";
+export { Title } from "./Title";

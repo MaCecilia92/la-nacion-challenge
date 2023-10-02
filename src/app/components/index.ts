@@ -1,2 +1,2 @@
-export { Breadcrum } from './Breadcrum';
-export {Card} from './Card';
+export { Breadcrum } from "./Breadcrum";
+export { Card } from "./Card";
