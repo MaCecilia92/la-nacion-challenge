@@ -1,4 +1,10 @@
+"use client";
+
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { LinkTag } from "../shared";
+import { setDataArticlesRequest } from "../store/articles/reducer";
+import { getTagsArticles } from "../store/articles/selectors";
 
 export interface BreadcrumsProps {
   slug: string;
@@ -60,12 +66,19 @@ const tags: BreadcrumsProps[] = [
 ];
 
 export const Breadcrum = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setDataArticlesRequest());
+  }, []);
+
+  const tagsArticles = useSelector(getTagsArticles);
   return (
-    <div className="font-sans text-sm flex items-center">
-      {tags.map((tag, index) => (
+    <div className="font-sans text-sm flex items-center text-sky-600">
+      {tagsArticles.map((tag, index) => (
         <div key={tag.slug} className="relative flex items-center">
           {index > 0 && (
-            <div className="h-1 w-1 mx-1 rounded-full bg-black"></div>
+            <div className="h-0.5 w-0.5 mx-1 rounded-full bg-sky-500"></div>
           )}
           <LinkTag tagText={tag.text} tagCount={tag.count} tagSlug={tag.slug} />
         </div>
